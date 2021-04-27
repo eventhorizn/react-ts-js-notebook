@@ -97,4 +97,4 @@ We are doing the local, 'in-app', 'in-browser' approach
 ![](images/bundle-local-npm.png)
 
 - Not using webpack
-- Using ESBuild
+- Using [ESBuild](https://github.com/evanw/esbuild)
