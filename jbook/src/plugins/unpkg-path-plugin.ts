@@ -1,5 +1,6 @@
 import * as esbuild from 'esbuild-wasm';
 
+// demo plugin. defined 'files'
 export const unpkgPathPlugin = () => {
 	return {
 		name: 'unpkg-path-plugin',
@@ -16,16 +17,17 @@ export const unpkgPathPlugin = () => {
 					return {
 						loader: 'jsx',
 						contents: `
-              import message from './message';
+              import message from 'tiny-test-pkg';
               console.log(message);
             `,
 					};
-				} else {
-					return {
-						loader: 'jsx',
-						contents: 'export default "hi there!"',
-					};
 				}
+				// } else {
+				// 	return {
+				// 		loader: 'jsx',
+				// 		contents: 'export default "hi there!"',
+				// 	};
+				// }
 			});
 		},
 	};

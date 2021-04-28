@@ -105,7 +105,7 @@ We are doing the local, 'in-app', 'in-browser' approach
 
 - Running in the browser...we don't have a local filesystem
 - Instead we are pointing ESBuild at a url where the file exists
-- NPM registry will be the url
+- NPM registry will be the url...kind of
 
 1. NPM by itself won't work
    - We will use a service called Unpkg
@@ -113,3 +113,16 @@ We are doing the local, 'in-app', 'in-browser' approach
    - Throws CORS error
 1. [UNPKG](https://unpkg.com/)
    - Global content delivery network for everything on NPM
+1. So, for ESBuild to work, bundling on the web...we have to define our own version of it's build step (where the bundling occurs)
+   ```js
+   const result = await ref.current.build({
+   	entryPoints: ['index.js'],
+   	bundle: true,
+   	write: false,
+   	plugins: [unpkgPathPlugin()],
+   });
+   ```
+   - Define a 'plugin' and override functions that default ESBuild would use
+   - 'onResolve' and 'onLoad': Work together
+   - 'onResolve' returns an object that is fed to 'onLoad'
+   - filter args for onResolve and filter, namespace args are key
