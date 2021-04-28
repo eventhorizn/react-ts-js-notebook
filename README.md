@@ -92,9 +92,24 @@ We are doing the local, 'in-app', 'in-browser' approach
 
 ![](images/trans-local.png)
 
+1. ESBuild works out of the box for transpiling
+   - 'transform' call
+
 ### Bundler
 
 ![](images/bundle-local-npm.png)
 
-- Not using webpack
-- Using [ESBuild](https://github.com/evanw/esbuild)
+1. Not using webpack
+1. Using [ESBuild](https://github.com/evanw/esbuild)
+1. ESBuild usually looks on the local filesystem for files to bundle
+
+- Running in the browser...we don't have a local filesystem
+- Instead we are pointing ESBuild at a url where the file exists
+- NPM registry will be the url
+
+1. NPM by itself won't work
+   - We will use a service called Unpkg
+   - NPM registry is configured to block any request not at a specific url
+   - Throws CORS error
+1. [UNPKG](https://unpkg.com/)
+   - Global content delivery network for everything on NPM
