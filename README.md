@@ -126,3 +126,12 @@ We are doing the local, 'in-app', 'in-browser' approach
    - 'onResolve' and 'onLoad': Work together
    - 'onResolve' returns an object that is fed to 'onLoad'
    - filter args for onResolve and filter, namespace args are key
+
+## Cache Layer
+
+We send lots of requests to unpkg, especially if an includes has a lot of it's own includes
+
+We are going to develop a caching layer to store some of these files to limit the number of requests
+
+1. [localforage](https://www.npmjs.com/package/localforage)
+   - API over the browser's indexedDB
