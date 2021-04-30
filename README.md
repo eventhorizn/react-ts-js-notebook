@@ -135,3 +135,17 @@ We are going to develop a caching layer to store some of these files to limit th
 
 1. [localforage](https://www.npmjs.com/package/localforage)
    - API over the browser's indexedDB
+   - kvp with the path as the key and the loaded package as the value
+
+## Loading css Files
+
+1. Need to have a css loader
+1. Issue w/ esbuild on the web
+   - When building css and js, it'll generate 2 files
+     - But we don't have a local file system
+   - It only outputs js on the web, so we need a way to include unpackaged css into jss
+
+![](images/esbuild-js-css.png)
+
+1. Instead, we will write js to take the content of the css and put it in the head tag
+   - Something of a hack
