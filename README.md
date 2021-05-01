@@ -2,6 +2,15 @@
 
 Building a javascript notebook (think Jupyter notebook) with React and TypeScript
 
+## Our App
+
+1. We want to run something like 'jbook serve'
+1. This should start a server on localhost:4005
+1. User will write code into an editor
+   - js or md in a cell
+1. We bundle in the browser
+1. We execute the users code in an iframe
+
 ## Inpsired By
 
 1. codepen.io
@@ -149,3 +158,57 @@ We are going to develop a caching layer to store some of these files to limit th
 
 1. Instead, we will write js to take the content of the css and put it in the head tag
    - Something of a hack
+
+## Code Execution
+
+### Considerations
+
+These are all big issues we have to solve
+
+1. User-provided code might throw errors and cause our program to crash
+   ```js
+   console.loooog('Error');
+   ```
+1. User-provided code might mutate the DOM, causing our program to crash
+   ```js
+   document.body.innerHTML = '';
+   ```
+1. A user might accidentally run code provided by another malicious user
+1. Infinite loops (or really big loops)
+   - Future work to fix
+
+What's the solution? **IFrames**
+
+### IFrames
+
+1. Used to embed one element (html element) inside another
+   ```html
+   <iframe src="/test.html" title="test"></iframe>
+   ```
+1. Allows you to run js in separate contexts
+   - Separate execution contexts
+1. You can connect the parent and child contexts to share info
+   - In child element, reference 'parent'
+   - In parent, reference:
+   ```js
+   document.querySelector('iframe').contentWindow;
+   ```
+1. You can also dissalow communication b/t the two
+   ![](images/iframe-direct-access.png)
+1. Our considerations above are solved by using iframes
+   - It crashes the iframe context, not the app's
+1. We are using a few properties in IFrames
+   - sandbox=""
+     - This keeps our parent and children from being able to access each other
+   - srcDoc={html}
+     - Allows us to generate source for the iframe w/o sending a request
+     - Much faster
+     - Drawback, can't use localStorage on IFrame
+1. To allow using localStorage
+   - You have to host the iframe on a separate port
+   - Lots more work, but a more 'complete' task
+
+# TODO
+
+1. Host IFrame on separate port
+   - Response and request
