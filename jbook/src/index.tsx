@@ -6,8 +6,8 @@ import { fetchPlugin } from './plugins/fetch-plugin';
 
 const App = () => {
 	const ref = useRef<any>();
+	const iframe = useRef<any>();
 	const [input, setInput] = useState('');
-	const [code, setCode] = useState('');
 
 	const startService = async () => {
 		ref.current = await esbuild.startService({
@@ -25,6 +25,8 @@ const App = () => {
 			return;
 		}
 
+		iframe.current.srcdoc = html;
+
 		const result = await ref.current.build({
 			entryPoints: ['index.js'],
 			bundle: true,
@@ -36,13 +38,28 @@ const App = () => {
 			},
 		});
 
-		setCode(result.outputFiles[0].text);
+		// send message to iframe event listener
+		iframe.current.contentWindow.postMessage(result.outputFiles[0].text, '*');
 	};
 
 	const html = `
-		<script>
-			${code}
-		</script>
+		<html>
+			<head></head>
+			<body>
+				<div id="root"></div>
+				<script>
+					window.addEventListener('message', (event) => {
+						try {
+							eval(event.data);
+						} catch (err) {
+							const root = document.querySelector('#root');
+							root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + err + '</div>';
+							console.error(err);
+						}
+					}, false);
+				</script>
+			</body>
+		</html>
 	`;
 
 	return (
@@ -54,14 +71,14 @@ const App = () => {
 			<div>
 				<button onClick={onClick}>Submit</button>
 			</div>
-			<pre>{code}</pre>
-			<iframe sandbox="" title="test" srcDoc={html}></iframe>
+			<iframe
+				ref={iframe}
+				sandbox="allow-scripts"
+				title="preview"
+				srcDoc={html}
+			></iframe>
 		</div>
 	);
 };
-
-const html = `
-<h1>Local HTML doc</h1>
-`;
 
 ReactDOM.render(<App />, document.querySelector('#root'));

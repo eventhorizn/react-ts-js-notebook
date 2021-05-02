@@ -198,8 +198,9 @@ What's the solution? **IFrames**
 1. Our considerations above are solved by using iframes
    - It crashes the iframe context, not the app's
 1. We are using a few properties in IFrames
-   - sandbox=""
+   - sandbox="allow-scripts"
      - This keeps our parent and children from being able to access each other
+     - Obviously can also run scripts w/i the iframe
    - srcDoc={html}
      - Allows us to generate source for the iframe w/o sending a request
      - Much faster
@@ -207,6 +208,9 @@ What's the solution? **IFrames**
 1. To allow using localStorage
    - You have to host the iframe on a separate port
    - Lots more work, but a more 'complete' task
+1. We can't communicate directly b/t the parent and child, but we can do something...
+   - Add Event Listeners!
+   - Have an event listener on the child (code changed) and have parent send the events
 
 # TODO
 
