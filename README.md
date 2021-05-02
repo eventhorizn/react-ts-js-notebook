@@ -212,6 +212,44 @@ What's the solution? **IFrames**
    - Add Event Listeners!
    - Have an event listener on the child (code changed) and have parent send the events
 
+This completes the backbone of the app
+
+# Code Editor
+
+- Right now we are writing code in a textarea
+- We want something like a code editor
+  - Line numbers
+  - Linter
+  - Intellisense?
+
+## Options
+
+1. CodeMirror
+   - Super easy to use
+   - Doesn't have as many out-of-the-box features
+1. Ace Editor
+   - Moderately easy to use
+   - Widely used
+1. [Monaco Editor](https://microsoft.github.io/monaco-editor/) (What this app uses)
+   - Same editor VS Code uses
+   - Hardest to setup
+     - React component makes it easy though
+   - Gives an almost-perfect editing experience immediately
+
+## Monaco Editor as React Component
+
+1. [Monaco Editor/React](https://www.npmjs.com/package/@monaco-editor/react)
+   - React component around the real Monaco Editor
+   - Three different 'Editors' in the props of the component
+   - We are using the default editor which is the uncontrolled editor
+1. Installation
+   ```bash
+   npm install --save-exact @monaco-editor/react@3.7.5
+   npm install --save-exact monaco-editor
+   ```
+   - First is the actual component
+   - Second allows us to see type defs for settings
+
 # TODO
 
 1. Host IFrame on separate port
