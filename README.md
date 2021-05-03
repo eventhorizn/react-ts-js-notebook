@@ -262,6 +262,19 @@ This completes the backbone of the app
    ```
 1. [Bulma](https://www.npmjs.com/package/bulma), but with some themes
 
+### Syntax Highlighting in Monaco (JSX)
+
+We will be using packages that aren't super well tested, so potential for breaking
+
+1. monaco-jsx-highlighter
+   - Does the actual highlighting, but doesn't know how to get the jsx code
+1. jscodeshift
+   - Will get jsx code to the highlighter
+
+```bash
+npm install --save-exact monaco-jsx-highlighter@0.0.15 jscodeshift@0.11.0 @types/jscodeshift@0.7.2
+```
+
 # TODO
 
 1. Host IFrame on separate port
