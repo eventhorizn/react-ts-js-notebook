@@ -249,6 +249,18 @@ This completes the backbone of the app
    ```
    - First is the actual component
    - Second allows us to see type defs for settings
+1. Add [Prettier](https://www.npmjs.com/package/prettier) to our code ditor
+   ```bash
+   npm install prettier @types/prettier
+   ```
+
+## App Styling
+
+1. Using [bulmaswatch](https://www.npmjs.com/package/bulmaswatch)
+   ```
+   npm install bulmaswatch
+   ```
+1. [Bulma](https://www.npmjs.com/package/bulma), but with some themes
 
 # TODO
 
