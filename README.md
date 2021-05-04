@@ -275,7 +275,26 @@ We will be using packages that aren't super well tested, so potential for breaki
 npm install --save-exact monaco-jsx-highlighter@0.0.15 jscodeshift@0.11.0 @types/jscodeshift@0.7.2
 ```
 
+### Resizing Components
+
+1. Vertical spot between code editor and previe
+1. Horizontal spot between code cells
+1. [React Resizable](https://www.npmjs.com/package/react-resizable)
+   ```bash
+   npm install --save-exact react-resizable@1.11.1 @types/react-resizable@1.7.2
+   ```
+1. Resizing w/ an IFrame
+   - So the issue w/ IFrames is that it has a different context than the rest of the app
+   - So the resizing would 'freeze' if you hovered over the iframe
+   - The way to fix is to, when we are hovering over the iframe, to 'draw' a div element
+   - The div element is in the app's context
+   - Look at the preview.tsx and preview.css files to see how this is implemented
+
 # TODO
 
 1. Host IFrame on separate port
    - Response and request
+1. IFrame Click and drag bug
+   - When dragging resizable and hovering over the iframe, we are in it's context
+   - So, it 'freezes' until we enter another element
+   - Fix is to, when we are dragging things around, put a div over the iframe
