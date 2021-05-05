@@ -32,8 +32,11 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
 
 	useEffect(() => {
 		iframe.current.srcdoc = html;
-		// send message to iframe event listener
-		iframe.current.contentWindow.postMessage(code, '*');
+
+		setTimeout(() => {
+			// send message to iframe event listener
+			iframe.current.contentWindow.postMessage(code, '*');
+		}, 50);
 	}, [code]);
 
 	return (
