@@ -300,11 +300,17 @@ We are using a pre-built react component
    npm install --save-exact @uiw/react-md-editor@2.1.1
    ```
 
+# Redux Refactor
+
+![](images/redux-design.png)
+
+1. Installation
+   ```bash
+   npm install --save-exact @types/react-redux@7.1.15 react-redux@7.2.2 redux@4.0.5 redux-thunk@2.3.0 axios@0.21.1
+   ```
+
 # TODO
 
 1. Host IFrame on separate port
    - Response and request
-1. IFrame Click and drag bug
-   - When dragging resizable and hovering over the iframe, we are in it's context
-   - So, it 'freezes' until we enter another element
-   - Fix is to, when we are dragging things around, put a div over the iframe
+   - Allows us to use browser storage
