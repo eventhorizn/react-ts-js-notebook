@@ -290,6 +290,16 @@ npm install --save-exact monaco-jsx-highlighter@0.0.15 jscodeshift@0.11.0 @types
    - The div element is in the app's context
    - Look at the preview.tsx and preview.css files to see how this is implemented
 
+## Markdown Editor
+
+We are using a pre-built react component
+
+1. [React MD Editor](https://www.npmjs.com/package/react-md-editor)
+1. Installation
+   ```bash
+   npm install --save-exact @uiw/react-md-editor@2.1.1
+   ```
+
 # TODO
 
 1. Host IFrame on separate port
