@@ -24,7 +24,20 @@ const reducer = (
 ): CellState => {
 	switch (action.type) {
 		case ActionType.UPDATE_CELL:
-			return state;
+			// copying all cells except for one we are updating
+			// on updated cell, copying id, but overwriting content
+			const { id, content } = action.payload;
+
+			return {
+				...state,
+				data: {
+					...state.data,
+					[id]: {
+						...state.data[id],
+						content,
+					},
+				},
+			};
 		case ActionType.DELETE_CELL:
 			return state;
 		case ActionType.MOVE_CELL:
