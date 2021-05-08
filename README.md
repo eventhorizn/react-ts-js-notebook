@@ -300,7 +300,7 @@ We are using a pre-built react component
    npm install --save-exact @uiw/react-md-editor@2.1.1
    ```
 
-# Redux Refactor
+# Redux
 
 ![](images/redux-design.png)
 
@@ -308,6 +308,40 @@ We are using a pre-built react component
    ```bash
    npm install --save-exact @types/react-redux@7.1.15 react-redux@7.2.2 redux@4.0.5 redux-thunk@2.3.0 axios@0.21.1
    ```
+
+## Immer: Simple State Update
+
+1. [Immer](https://immerjs.github.io/immer/)
+   - Allows you to do immutable state updates in a simple way
+1. Installation
+   ```bash
+   npm install immer
+   ```
+
+### Without Immer
+
+```js
+const { id, content } = action.payload;
+
+return {
+	...state,
+	data: {
+		...state.data,
+		[id]: {
+			...state.data[id],
+			content,
+		},
+	},
+};
+```
+
+### With Immer
+
+```js
+const { id, content } = action.payload;
+
+state.data[id].content = content;
+```
 
 # TODO
 
