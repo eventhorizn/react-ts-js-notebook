@@ -343,6 +343,20 @@ const { id, content } = action.payload;
 state.data[id].content = content;
 ```
 
+## Connecting Bundles with Redux
+
+1. Bundle state is technically derived from cell state
+   - Which is usually where a 'selector' comes in
+   - But we have async functions in bundling
+1. Should we use a bundles reducer?
+   - Or should we use a selector?
+     ![](images/bundle-selector.png)
+1. We want to avoid using selectors w/ any async functions
+   - Use w/ synchronous calcs
+   - selectors do caching type calcs for optimization, which can have weird results w/ async code
+1. So, we're going to use a bundles reducer
+   ![](images/bundler-reducer.png)
+
 # TODO
 
 1. Host IFrame on separate port
