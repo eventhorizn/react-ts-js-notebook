@@ -249,7 +249,7 @@ This completes the backbone of the app
    ```
    - First is the actual component
    - Second allows us to see type defs for settings
-1. Add [Prettier](https://www.npmjs.com/package/prettier) to our code ditor
+1. Add [Prettier](https://www.npmjs.com/package/prettier) to our code editor
    ```bash
    npm install prettier @types/prettier
    ```
