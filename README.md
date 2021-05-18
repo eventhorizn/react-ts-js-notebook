@@ -378,6 +378,57 @@ state.data[id].content = content;
    - We are going to redefine the show function so that subsequent cells get an empty show
      - Current cell gets the real show function
 
+# CLI, Launching App, and Local Storage
+
+![](images/app-infrastructure.png)
+
+1. We want to save and load a user's workbook
+   - Single file to user's hardrive
+   - Single file so user can share
+   - File works independently from application
+1. How will we launch the app?
+   ```cmd
+   npx jbook serve
+   ```
+   - Open browser and navigate to specific port
+1. Node API will be an express server
+
+![](images/app-inf-detail.png)
+
+1. We could go an easy route and use React scripts to host all the different pieces
+1. We are instead going to make these separate apps
+   - Learn more, and future proof app
+1. We are going to create npm packages for each layer in the above stack
+   - jbook
+   - @jbook/local-api
+   - @jbook/public-api
+   - @jbook/local-client
+1. This allows us to use one part in a different piece
+   - react app will use express api
+   - express api will use cli
+1. Allows us to version pieces and extract common logic into packages
+1. We are not building the Public Express API
+1. So, we will have multiple packages in our project...how to manage?
+
+## Lerna CLI
+
+1. Tool for managing a multi-package project
+1. Makes it easy to consume updates b/t our different modules on our local machine
+   - Think about making an update to a package then consuming that update
+   - Usually you push out the updated package
+   - Conusmer then updates which version it's pointed to
+1. Lerna alternatives
+   - Yarn workspaces
+   - NPM workspaces
+   - Bolt
+   - Luigi
+1. Installation
+   ```bash
+   npm install -g --save-exact lerna@3.22.1
+   ```
+1. Lerna Project Directory
+   ![](images/lerna-org.png)
+
 # TODO
 
 1. Host IFrame on separate port
