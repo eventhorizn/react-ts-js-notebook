@@ -369,6 +369,14 @@ state.data[id].content = content;
 1. 'Derived' State
    - Inside 'CodeCell', add selector
    - Get code from current cell, and all prior cells
+1. We're adding a 'show' function so that we don't have to reference the index of to show anything
+   ```js
+   show(console.log('hello'));
+   ```
+   - console.log will actually output to the preview
+   - Issue is that subsequent previews will show conent from previous cells
+   - We are going to redefine the show function so that subsequent cells get an empty show
+     - Current cell gets the real show function
 
 # TODO
 
