@@ -357,6 +357,19 @@ state.data[id].content = content;
 1. So, we're going to use a bundles reducer
    ![](images/bundler-reducer.png)
 
+## Cumulative Code Execution
+
+![](images/cumulative-bundle.png)
+
+1. Allow all subsuquent cells to reference any previous code cell
+   - const color = 'red';
+     - Cell 1
+   - console.log(color);
+     - Cell 2
+1. 'Derived' State
+   - Inside 'CodeCell', add selector
+   - Get code from current cell, and all prior cells
+
 # TODO
 
 1. Host IFrame on separate port
