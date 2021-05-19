@@ -412,6 +412,8 @@ state.data[id].content = content;
 
 ## Lerna CLI
 
+[Documentation](https://github.com/lerna/lerna)
+
 1. Tool for managing a multi-package project
 1. Makes it easy to consume updates b/t our different modules on our local machine
    - Think about making an update to a package then consuming that update
@@ -428,6 +430,11 @@ state.data[id].content = content;
    ```
 1. Lerna Project Directory
    ![](images/lerna-org.png)
+1. When using Lerna, we do not manually NPM install modules
+   ```bash
+   lerna add express --scope=cli
+   ```
+   - Be careful, base lerna add will add package to each local module
 
 # TODO
 
