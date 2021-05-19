@@ -410,7 +410,7 @@ state.data[id].content = content;
 1. We are not building the Public Express API
 1. So, we will have multiple packages in our project...how to manage?
 
-## Lerna CLI
+## Lerna
 
 [Documentation](https://github.com/lerna/lerna)
 
@@ -434,7 +434,28 @@ state.data[id].content = content;
    ```bash
    lerna add express --scope=cli
    ```
-   - Be careful, base lerna add will add package to each local module
+   - Be careful, base lerna add will add package to each local module if you don't include scope
+
+## CLI
+
+![](images/cli-commands.png)
+
+1. Using [Commander](https://www.npmjs.com/package/commander)
+
+   ```ts
+   import { Command } from 'commander';
+
+   export const serveCommand = new Command()
+   	.command('serve [filename]')
+   	.description('Open a file for editing')
+   	.option('-p, --port <number>', 'port to run server on', '4005')
+   	.action(() => {
+   		console.log('Getting ready to serve a file');
+   	});
+   ```
+
+   - [] denotes optional parameters
+   - <> denotes if they provide the port option, they must provide a n umber
 
 # TODO
 
