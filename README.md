@@ -457,6 +457,29 @@ state.data[id].content = content;
    - [] denotes optional parameters
    - <> denotes if they provide the port option, they must provide a n umber
 
+## API
+
+1. Are we actively developing our app on the local machine?
+   - Use proxy to local react app dev server
+   ```ts
+   app.use(
+   	createProxyMiddleware({
+   		target: 'http://localhost:3000',
+   		ws: true,
+   		logLevel: 'silent',
+   	})
+   );
+   ```
+1. Are we running our app on a user's machine?
+
+   - Serve up built files from build dir
+
+   ```ts
+   const packagePath = require.resolve('local-client/build/index.html');
+
+   app.use(express.static(path.dirname(packagePath)));
+   ```
+
 # TODO
 
 1. Host IFrame on separate port
