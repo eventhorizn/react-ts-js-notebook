@@ -562,6 +562,12 @@ state.data[id].content = content;
    "bin": "dist/index.js",
    ```
    - Add `#!/usr/bin/env node` to index
+1. npm publish
+   ```cmd
+   npm login
+   npm publish
+   ```
+   - Make sure you are in the root dir of the project
 
 # TODO
 
