@@ -480,6 +480,12 @@ state.data[id].content = content;
    app.use(express.static(path.dirname(packagePath)));
    ```
 
+## Data Persistence
+
+### Fetching Cells
+
+![](images/fetching-cells.png)
+
 # TODO
 
 1. Host IFrame on separate port
