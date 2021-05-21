@@ -17,6 +17,26 @@ Building a javascript notebook (think Jupyter notebook) with React and TypeScrip
 1. babeljs.io
 1. Jupyter
 
+## Getting Started
+
+### Running Locally
+
+1. Clone the repo
+1. We are using lerna to launce multiple node projects at once
+   - Navigate to jbook folder where lerna.json is
+   - Run `lerna bootstrap` to install packages for all node apps through lerna
+1. Stay in same folder
+   - Run `npm run start` which runs a script, but really runs `lerna run start --parallel`
+   - Will start all node projects in the solution
+1. You'll need to start the cli manually from the dist folder (index.js)
+   - It's annoying since you'll have to restart the cli if you do any changes
+   - Navigate to jbook/packages/cli/dist
+   - Run `node index.js serve` to launch the cli
+1. This will launch the app on port 4005 so you can navigate to
+   - localhost:4005
+
+### Running Published App
+
 ## Transpiling Java Code
 
 The above sites use live transpiling of code. How do we do that in this app?
@@ -485,6 +505,63 @@ state.data[id].content = content;
 ### Fetching Cells
 
 ![](images/fetching-cells.png)
+
+1. We are saving our cells locally as a json document
+   ```json
+   [
+   	{ "content": "# Test", "type": "text", "id": "vqj0q" },
+   	{
+   		"content": "const a = 'Test';\r\n\r\nshow(a);",
+   		"type": "code",
+   		"id": "lfwns"
+   	}
+   ]
+   ```
+1. Through cli args we can open a file in a specific location, otherwise (since we launch the cli manually)
+   - It will be in the cli/dist folder
+
+# NPM Publishing
+
+![](images/npm-publish.png)
+
+1. Make sure package name is unique (self explanatory)
+1. Specify which files should be sent to NPM
+   ```json
+   "files": [
+   	"dist"
+   ],
+   ```
+1. Split dependencies
+   - Just make sure you don't include dependencies in the "dependencies" section you don't need
+   ```json
+   "dependencies": {
+   	"@types/express": "^4.17.11",
+   	"express": "^4.17.1",
+   	"typescript": "^4.2.4"
+   }
+   ```
+   - vs
+   ```json
+   "dependencies": {
+   	"express": "^4.17.1"
+   },
+   "devDependencies": {
+   	"@types/express": "^4.17.11",
+   	"typescript": "^4.2.4"
+   }
+   ```
+1. Set package to be publicly available
+   - It's public by default, but:
+   ```json
+   "publishConfig": {
+   	"access": "public"
+   },
+   ```
+1. If building a cli/configure file to run
+   ```json
+   "bin": "dist/index.js",
+   ```
+   - Add `#!/usr/bin/env node` to index
 
 # TODO
 
