@@ -568,6 +568,10 @@ state.data[id].content = content;
    npm publish
    ```
    - Make sure you are in the root dir of the project
+1. Publishing the application
+   ```cmd
+   lerna publish --no-push
+   ```
 
 # TODO
 
