@@ -589,11 +589,9 @@ state.data[id].content = content;
 
 # TODO
 
-1. Host IFrame on separate port
-   - Response and request
-   - Allows us to use browser storage
+1. Rendering React components isn't working
+   - Outputing the text instead of html
 1. Make a small change and republish thru lerna
-1. Maybe write cells into a file in a more user-friendly format?
 1. Code editor height is fixed
    - Height should adjust based on code in it
 1. Show default cells on new notebook
