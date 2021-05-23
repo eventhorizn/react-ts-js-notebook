@@ -37,6 +37,20 @@ Building a javascript notebook (think Jupyter notebook) with React and TypeScrip
 
 ### Running Published App
 
+1. Install globally
+   ```bash
+   npm install -g ghake-jsnote
+   ```
+   - Preferred way
+   ```bash
+   ghake-jsnote serve
+   ```
+1. Or use npx
+   ```bash
+   npx ghake-jsnote serve
+   ```
+1. A notebook will be either created or opened depending on where you launched the app for
+
 ## Transpiling Java Code
 
 The above sites use live transpiling of code. How do we do that in this app?
@@ -578,3 +592,17 @@ state.data[id].content = content;
 1. Host IFrame on separate port
    - Response and request
    - Allows us to use browser storage
+1. Make a small change and republish thru lerna
+1. Maybe write cells into a file in a more user-friendly format?
+1. Code editor height is fixed
+   - Height should adjust based on code in it
+1. Show default cells on new notebook
+   - Default notes
+1. Better getting started notes in README
+1. Context menu for saving?
+   - We save automatically now
+1. Can we change the command line to launch jbook?
+   ```
+   ghake-jsnote serve
+   ```
+1. Dark theme on render side?
