@@ -1,6 +1,6 @@
 {
 	"name": "ghake-jsnote",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "",
 	"bin": "dist/index.js",
 	"publishConfig": {
@@ -17,10 +17,10 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@ghake-jsnote/local-client": "^1.1.0"
+		"@ghake-jsnote/local-client": "^1.2.0"
 	},
 	"devDependencies": {
-		"@ghake-jsnote/local-api": "^1.1.0",
+		"@ghake-jsnote/local-api": "^1.2.0",
 		"@types/node": "^15.3.0",
 		"commander": "^7.2.0",
 		"esbuild": "0.8.26",
