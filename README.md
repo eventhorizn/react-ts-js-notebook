@@ -4,6 +4,8 @@ Building a javascript notebook (think Jupyter notebook) with React and TypeScrip
 
 # Getting Started
 
+[NPM Link](https://www.npmjs.com/package/ghake-jsnote)
+
 ## Running Published App
 
 1. Install globally
