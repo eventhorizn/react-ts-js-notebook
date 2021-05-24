@@ -621,6 +621,10 @@ state.data[id].content = content;
    ```cmd
    lerna publish
    ```
+1. If you build lerna, but new packages aren't published
+   ```cmd
+   lerna publish from-package
+   ```
 
 # TODO
 
