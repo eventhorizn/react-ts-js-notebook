@@ -2,24 +2,60 @@
 
 Building a javascript notebook (think Jupyter notebook) with React and TypeScript
 
-## Our App
+# Getting Started
 
-1. We want to run something like 'jbook serve'
-1. This should start a server on localhost:4005
-1. User will write code into an editor
-   - js or md in a cell
-1. We bundle in the browser
-1. We execute the users code in an iframe
+## Running Published App
 
-## Inpsired By
+1. Install globally
+   ```bash
+   npm install -g ghake-jsnote
+   ```
+   - Preferred way
+   ```bash
+   ghake-jsnote serve
+   ```
+1. Or use npx
+   ```bash
+   npx ghake-jsnote serve
+   ```
+1. A notebook will be either created or opened depending on where you launched the app for
 
-1. codepen.io
-1. babeljs.io
-1. Jupyter
+### CLI Options
 
-## Getting Started
+The main command is `serve`
 
-### Running Locally
+If we just run the main command, we will either open or create a file called `notebook.js`
+
+```
+ghake-jsnote serve
+```
+
+1. Filename
+   ```bash
+   ghake-jsnote serve test.js
+   ```
+   - Make sure you use a .js file
+   - It will create a file in the directory you are in
+1. If you already have a file created it will open it
+   - You can designate the folder in the serve command
+   - Folder/file **must** exist
+1. Port
+   ```
+   ghake-jsnote serve --port 4008
+   ```
+   ```
+   ghake-jsnote serve -p 4008
+   ```
+1. Combination
+   - You can combine the filename and port in any order
+   ```
+   ghake-jsnote serve test.js --port 4008
+   ```
+   ```
+   ghake-jsnote serve -p 4008 test/test.js
+   ```
+
+## Running Locally
 
 1. Clone the repo
 1. We are using lerna to launce multiple node projects at once
@@ -35,21 +71,20 @@ Building a javascript notebook (think Jupyter notebook) with React and TypeScrip
 1. This will launch the app on port 4005 so you can navigate to
    - localhost:4005
 
-### Running Published App
+## Our App
 
-1. Install globally
-   ```bash
-   npm install -g ghake-jsnote
-   ```
-   - Preferred way
-   ```bash
-   ghake-jsnote serve
-   ```
-1. Or use npx
-   ```bash
-   npx ghake-jsnote serve
-   ```
-1. A notebook will be either created or opened depending on where you launched the app for
+1. We want to run something like 'jbook serve'
+1. This should start a server on localhost:4005
+1. User will write code into an editor
+   - js or md in a cell
+1. We bundle in the browser
+1. We execute the users code in an iframe
+
+## Inpsired By
+
+1. codepen.io
+1. babeljs.io
+1. Jupyter
 
 ## Transpiling Java Code
 
@@ -594,8 +629,6 @@ state.data[id].content = content;
 1. Make a small change and republish thru lerna
 1. Code editor height is fixed
    - Height should adjust based on code in it
-1. Show default cells on new notebook
-   - Default notes
 1. Better getting started notes in README
 1. Context menu for saving?
    - We save automatically now
