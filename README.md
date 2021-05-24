@@ -619,7 +619,7 @@ state.data[id].content = content;
    - Make sure you are in the root dir of the project
 1. Publishing the application
    ```cmd
-   lerna publish --no-push
+   lerna publish
    ```
 
 # TODO
