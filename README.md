@@ -630,8 +630,8 @@ state.data[id].content = content;
 
 # TODO
 
-1. Rendering React components isn't working
-   - Outputing the text instead of html
+1. If a cell has an error, all subsequent errors show error
+   - Limit just to problem cell
 1. Make a small change and republish thru lerna
 1. Code editor height is fixed
    - Height should adjust based on code in it
